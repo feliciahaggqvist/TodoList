@@ -14,6 +14,7 @@
         v-model="newTask"
         id="new-task"
         placeholder="New task"
+        @input="set_task"
       />
       <button
         class="c-todo-list__add-btn"
@@ -125,17 +126,17 @@ export default {
   },
   mounted() {
     this.displayedTasks = [...this.tasks];
-
-    if (localStorage.task) {
-      this.task = localStorage.task;
-    }
-  },
-  watch: {
-    task(newTask) {
-      localStorage.task = newTask;
-    }
   },
   methods: {
+    set_task: function() {
+      console.log("SET: ", this.newTask);
+      localStorage.setItem(JSON.stringify(this.newTask), this.newTask);
+      this.newTask = this.get_task();
+    },
+    get_task: function() {
+      console.log("GET: ", this.newTask);
+      return localStorage.getItem(JSON.stringify(this.newTask), this.newTask);
+    },
     showAllTasks: function() {
       this.displayedTasks = this.tasks;
       return this.displayedTasks;
