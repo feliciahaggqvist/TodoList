@@ -1,4 +1,4 @@
-# monster-game
+# todo-list
 
 ## Project setup
 ```
