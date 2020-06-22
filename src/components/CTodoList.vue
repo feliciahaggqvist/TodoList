@@ -14,7 +14,6 @@
         v-model="newTask"
         id="new-task"
         placeholder="New task"
-        @input="set_task"
       />
       <button
         class="c-todo-list__add-btn"
@@ -63,7 +62,7 @@
     <div class="c-todo-list__listed-tasks">
       <ul>
         <CTodoItem
-          v-for="(task) in displayedTasks"
+          v-for="task in displayedTasks"
           :key="task.title"
           :task="task"
           @remove-item="removeTask(task)"
@@ -78,6 +77,8 @@
 import CTodoItem from "../components/CTodoItem.vue";
 import CFilterModal from "../components/CFilterModal.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+const STORAGE_KEY = "task-storage";
 
 export default {
   name: "todo-list",
@@ -127,16 +128,10 @@ export default {
   mounted() {
     this.displayedTasks = [...this.tasks];
   },
+  created() {
+    this.tasks = JSON.parse(localStorage.getItem(STORAGE_KEY|| '[]'));
+  },
   methods: {
-    set_task: function() {
-      console.log("SET: ", this.newTask);
-      localStorage.setItem(JSON.stringify(this.newTask), this.newTask);
-      this.newTask = this.get_task();
-    },
-    get_task: function() {
-      console.log("GET: ", this.newTask);
-      return localStorage.getItem(JSON.stringify(this.newTask), this.newTask);
-    },
     showAllTasks: function() {
       this.displayedTasks = this.tasks;
       return this.displayedTasks;
@@ -149,13 +144,16 @@ export default {
       this.tasks.push(addNewTask);
       this.displayedTasks.push(addNewTask);
       this.newTask = "";
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     removeTask(task) {
       this.displayedTasks.splice(this.displayedTasks.indexOf(task), 1) ==
-        this.tasks.splice(this.tasks.indexOf(task), 1);
+      this.tasks.splice(this.tasks.indexOf(task), 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     completeTask(task) {
       task.completed = !task.completed;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     clearCompleted: function() {
       this.displayedTasks = this.tasks.filter(this.inProgress);
