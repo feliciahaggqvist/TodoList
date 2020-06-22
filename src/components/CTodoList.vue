@@ -95,31 +95,8 @@ export default {
       refresh: "/",
       tasks: [
         {
-          title:
-            "Fix bug: when deleting one task, the task underneath it changes its 'completed' state",
+          title: "New Task",
           completed: false
-        },
-        {
-          title: "Add filter feature",
-          completed: true
-        },
-        {
-          title: "Reorganize style to follow BEM structure",
-          completed: true
-        },
-        {
-          title:
-            "Modify filter feature: enable toggle function between completed and incompleted tasks",
-          completed: true
-        },
-        {
-          title: "Watch a tutorial on Promise and async/await",
-          completed: false
-        },
-        {
-          title:
-            "Fix bug: deleting task in filter, the deleted task in 'displayedTasks' does not match task in 'tasks'",
-          completed: true
         }
       ],
       displayedTasks: []
@@ -129,7 +106,7 @@ export default {
     this.displayedTasks = [...this.tasks];
   },
   created() {
-    this.tasks = JSON.parse(localStorage.getItem(STORAGE_KEY|| '[]'));
+    this.tasks = JSON.parse(localStorage.getItem(STORAGE_KEY || "[]"));
   },
   methods: {
     showAllTasks: function() {
@@ -141,13 +118,13 @@ export default {
         title: this.newTask,
         completed: false
       };
+      this.displayedTasks = this.tasks;
       this.tasks.push(addNewTask);
-      this.displayedTasks.push(addNewTask);
       this.newTask = "";
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     removeTask(task) {
-      this.displayedTasks.splice(this.displayedTasks.indexOf(task), 1) ==
+      this.displayedTasks = this.tasks;
       this.tasks.splice(this.tasks.indexOf(task), 1);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
@@ -156,12 +133,15 @@ export default {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     clearCompleted: function() {
-      this.displayedTasks = this.tasks.filter(this.inProgress);
       this.tasks = this.tasks.filter(this.inProgress);
+      this.displayedTasks = this.tasks.filter(this.inProgress);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     clearAllTasks: function() {
-      this.displayedTasks = [];
-      this.tasks = [];
+       this.displayedTasks = this.tasks;
+       this.tasks = [];
+       this.displayedTasks = [];
+       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
     },
     inProgress: function(task) {
       return !this.isCompleted(task);
