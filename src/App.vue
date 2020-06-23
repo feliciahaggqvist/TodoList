@@ -21,6 +21,6 @@ export default {
 
 <style>
 body {
-  background-color: #abc;
+  background-color: rgb(170, 170, 204);
 }
 </style>
