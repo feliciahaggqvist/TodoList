@@ -7,9 +7,10 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import {faClock } from '@fortawesome/free-solid-svg-icons'
+import {faList } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTrash, faCheck, faTimes, faPlus, faAngleDown, faClock)
+library.add(faTrash, faCheck, faTimes, faPlus, faAngleDown, faClock, faList)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
