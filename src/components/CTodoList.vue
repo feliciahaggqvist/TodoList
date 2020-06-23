@@ -172,10 +172,10 @@ export default {
   border: 1px solid rgb(255, 255, 255);
   border-radius: 12px;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 8%;
   @media only screen and (max-width: 768px) {
   width: 355px;
-  margin-top: 25px;
+  margin-top: 15%;
   }
   
   &__title {
