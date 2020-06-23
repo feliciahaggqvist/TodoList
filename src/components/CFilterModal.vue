@@ -81,6 +81,9 @@ export default {
   &__body {
     position: relative;
     padding: 24px;
+    @media only screen and (max-width: 768px) {
+    padding: 11px;
+    }
   }
 }
 

@@ -25,7 +25,7 @@
     </form>
 
     <div class="c-todo-list__btn-group">
-      <button class="c-todo-list__show-all-tasks-btn" @click="showAllTasks">Show all tasks</button>
+      <button class="c-todo-list__show-all-tasks-btn" @click="showAllTasks"><font-awesome-icon icon="list" class="c-todo-list__icon"/> Show all tasks</button>
       <button class="c-todo-list__filter-btn" @click="isDefaultModalVisible = true">
         <font-awesome-icon icon="angle-down" class="c-todo-list__icon" />Filter tasks
       </button>
@@ -95,7 +95,7 @@ export default {
       refresh: "/",
       tasks: [
         {
-          title: "New Task",
+          title: "",
           completed: false
         }
       ],
@@ -167,19 +167,24 @@ export default {
 .c-todo-list {
   width: 800px;
   margin: 0 auto;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   box-shadow: 5px 5px rgba(66, 66, 66, 0.329);
-  border: 1px solid #fff;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 12px;
   text-align: center;
-  margin-top: 85px;
+  margin-top: 50px;
+  @media only screen and (max-width: 768px) {
+  width: 355px;
+  margin-top: 25px;
+  }
+  
   &__title {
     font-family: "Cookie";
     font-size: 60px;
     cursor: pointer;
     &--link {
       text-decoration: none;
-      color: black;
+      color: rgb(0, 0, 0);
 
       &:hover {
         color: rgb(65, 62, 62);
@@ -191,24 +196,34 @@ export default {
     width: 72.1%;
     margin-right: -20px;
     margin-bottom: 3%;
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 2%;
+      margin-right: -9px;
+      width: 56%;
+    }
   }
   &__length {
-    color: #ccc;
+    color: rgb(204, 204, 204);
     font-size: 35px;
   }
   &__add-btn {
-    background-color: green;
-    border: 1px solid green;
+    background-color: rgb(0,128,0);
+    border: 1px solid rgb(0,128,0);
     padding: 7.2px 13px 10px 10px;
     margin-left: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
+    @media only screen and (max-width: 768px) {
+      padding: 7.2px 13px 10px 5px;
+      margin-left: 9px;
+      margin-bottom: 2%;
+    }
     &:hover {
       background-color: rgb(1, 141, 1);
       cursor: pointer;
     }
     &:disabled {
-      border: 1px solid #ccc;
-      color: #ccc;
+      border: 1px solid rgb(204, 204, 204);
+      color: rgb(204, 204, 204);
       background-color: rgb(241, 241, 241);
       cursor: initial;
     }
@@ -221,17 +236,24 @@ export default {
   }
   &__btn-group {
     display: table;
-    margin-left: 282px;
+    margin-left: 257px;
+    @media only screen and (max-width: 768px) {
+      margin-left: 9px;
+      line-height: 38px;
+    }
   }
 
   &__show-all-tasks-btn {
     margin-right: 4px;
-    padding: 11.7px 10px 10.5px 10px;
-    background-color: rgb(60, 151, 255);
+    padding: 10px 10px 10.5px 10px;
+    background-color: rgb(94, 177, 255);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+    }
     &:hover {
-      background-color: rgb(94, 177, 255);
+      background-color: rgb(120, 189, 253);
       cursor: pointer;
     }
   }
@@ -239,9 +261,12 @@ export default {
   &__filter-btn {
     margin-right: 4px;
     padding: 10px 10px 10.5px 10px;
-    background-color: orange;
+    background-color: rgb(255, 165, 0);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+    }
     &:hover {
       background-color: rgb(251, 175, 34);
       cursor: pointer;
@@ -254,11 +279,14 @@ export default {
   }
 
   &__completed-tasks-btn {
-    background-color: green;
+    background-color: rgb(0, 128, 0);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px 10px 10.5px 10px;
     margin-right: 23px;
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+    }
 
     &:hover {
       background-color: rgb(1, 141, 1);
@@ -267,9 +295,12 @@ export default {
   }
   &__incompleted-tasks-btn {
     padding: 10px 10px 10.5px 10px;
-    background-color: orange;
+    background-color: rgb(255, 165, 0);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+    }
     &:hover {
       background-color: rgb(251, 175, 34);
       cursor: pointer;
@@ -278,10 +309,14 @@ export default {
 
   &__clear-completed-btn {
     margin-right: 4px;
-    background-color: green;
+    background-color: rgb(0, 128, 0);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px 10px 10.5px 10px;
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+      margin-right: 7px;
+    }
 
     &:hover {
       background-color: rgb(1, 141, 1);
@@ -290,17 +325,27 @@ export default {
   }
   &__clear-all-btn {
     margin-right: 4px;
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     border: none;
-    color: white;
-    padding: 10.3px 10px 10.5px 10px;
+    color: rgb(255, 255, 255);
+    padding: 10px 10px 10.5px 10px;
     cursor: pointer;
+    @media only screen and (max-width: 768px) {
+      padding: 6px 8px 8px 8px;
+    }
+    
     &:hover {
-      background: rgb(255, 51, 0);
+      background: rgb(248, 89, 49);
     }
   }
   &__listed-tasks {
     margin-bottom: 6%;
+    margin-right: -5px;
+    margin-left: -4px;
+    @media only screen and (max-width: 768px) {
+    margin-right: 4px;
+    margin-left: -9px;
+  }
   }
 }
 </style>

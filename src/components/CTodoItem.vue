@@ -33,6 +33,9 @@ export default {
   margin-left: 30px;
   margin-bottom: 0.5%;
   line-height: 3;
+  @media only screen and (max-width: 768px) {
+    margin-left: 4px;
+  }
 
   &::first-letter {
     text-transform: capitalize;
@@ -57,12 +60,16 @@ export default {
     font-size: 12px;
     padding: 13px 12px 13px 10px;
     margin-left: -34.3px;
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
+    @media only screen and (max-width: 768px) {
+    margin-left: 4px;
+    font-size: 12px;
+  }
 
     &:hover {
-      background: rgb(255, 51, 0);
+      background: rgb(248, 89, 49);
       cursor: pointer;
     } 
   }
