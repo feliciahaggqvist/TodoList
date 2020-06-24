@@ -343,6 +343,7 @@ export default {
     margin-right: -5px;
     margin-left: -4px;
     @media only screen and (max-width: 768px) {
+    margin-bottom: 9%;
     margin-right: 4px;
     margin-left: -9px;
   }
